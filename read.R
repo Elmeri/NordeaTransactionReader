@@ -1,6 +1,6 @@
 library(plyr)
 args<-commandArgs(TRUE)
-sink("myfile.txt", append=FALSE, split=FALSE)
+sink(args[2], append=FALSE, split=FALSE)
 mydata <- read.table(file=args[1], sep=";", fill=TRUE, header=T, skip=1)  # na.strings=c("","NA")
 # print(mydata[, 5])
 # print(mydata)
