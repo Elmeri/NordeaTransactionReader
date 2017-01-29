@@ -4,3 +4,5 @@ notes
 myfile.txt
 formatted_data.txt
 data.txt
+*.txt
+.vscode

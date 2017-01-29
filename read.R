@@ -1,7 +1,10 @@
 library(plyr)
 args<-commandArgs(TRUE)
-sink(args[2], append=FALSE, split=FALSE)
+sink(args[2], append=FALSE, split=FALSE)    # Output to filename defined by second argument
 mydata <- read.table(file=args[1], sep=";", fill=TRUE, header=T, skip=1)  # na.strings=c("","NA")
+
+
+
 # print(mydata[, 5])
 # print(mydata)
 # summary(mydata)
@@ -13,8 +16,7 @@ mydata[, 1] <- as.Date( mydata[, 1], "%d.%m.%Y")
 # summary(mydata)
 # print(mydata[, 1])
 
-transactions_data = ddply(mydata, .(Kuukausi=format(Kirjauspäivä, "%m")), summarise, Määrä=sum(Määrä[Määrä < 0]))
-
+transactions_data = ddply(mydata, .(Kuukausi=format(Kirjauspäivä, "%m")), summarise, Määrä=sum(Määrä[Määrä > 0]))
 
 # monthlySummary <- ddply(tempData, .(format(Date, "%m" ), summarize, monthlyMean=mean(Temp_C))
 
